@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:task_management/screens/widgets/calenderComponent.dart';
 import 'package:task_management/screens/widgets/ui_contants.dart';
+import 'package:task_management/utils/calender_info.dart';
 
 import 'widgets/calenderWidget.dart';
 
@@ -8,6 +10,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     final appbar = Uiconstants.appbar();
     return Scaffold(
       appBar: appbar,
@@ -32,28 +35,7 @@ class Home extends StatelessWidget {
                 )
               ])),
             ), // container manage your tasks
-            Container(
-              height: 300,
-              margin: const EdgeInsets.symmetric(vertical: 30),
-              child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Expanded(
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    primary: false,
-                    shrinkWrap: true,
-                    children: const [
-                      CalenderWidget(day: "Sun", date: "12"),
-                      CalenderWidget(day: "Sun", date: "12"),
-                      CalenderWidget(day: "Sun", date: "12"),
-                      CalenderWidget(day: "Sun", date: "12"),
-                      CalenderWidget(day: "Sun", date: "12"),
-                      CalenderWidget(day: "Sun", date: "12"),
-                      CalenderWidget(day: "Sun", date: "12"),
-                    ],
-                  ),
-                )
-              ]),
-            )
+            const CalenderComponent()
           ],
         ),
       ),
