@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/screens/widgets/calenderComponent.dart';
 import 'package:task_management/screens/widgets/ui_contants.dart';
-import 'package:task_management/utils/calender_info.dart';
-
-import 'widgets/calenderWidget.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -35,7 +32,94 @@ class Home extends StatelessWidget {
                 )
               ])),
             ), // container manage your tasks
-            const CalenderComponent()
+            const CalenderComponent(),
+            Container(
+              height: size.height / 4,
+              margin: EdgeInsets.symmetric(horizontal: size.width / 18),
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 169, 210, 243),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ClipRRect(
+                        child: Container(
+                          width: size.width / 5,
+                          height: size.height / 25,
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: const Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "High",
+                                style: TextStyle(color: Colors.black),
+                              )),
+                        ),
+                      ),
+                      ClipRRect(
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          child: const Align(
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.share,
+                              color: Colors.black,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  RichText(
+                      text: const TextSpan(children: [
+                    TextSpan(
+                        text: "April Dribble Shots Design plan for the month\n",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 25)),
+                    WidgetSpan(
+                        child: SizedBox(
+                      height: 35,
+                    )),
+                    WidgetSpan(
+                        child: Icon(
+                      Icons.calendar_month,
+                      color: Colors.black,
+                      size: 20,
+                    )),
+                    WidgetSpan(
+                        child: SizedBox(
+                      width: 10,
+                    )),
+                    TextSpan(
+                        text: "16 Apr",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 47, 46, 46),
+                            fontSize: 15))
+                  ]))
+                ],
+              ),
+            )
           ],
         ),
       ),

@@ -17,7 +17,7 @@ class _CalenderState extends State<CalenderWidget> {
     return InkWell(
       child: Container(
         width: 50,
-        margin: const EdgeInsets.symmetric(horizontal: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 15),
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
