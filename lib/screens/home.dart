@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:task_management/constants/constants.dart';
 import 'package:task_management/screens/widgets/calenderComponent.dart';
+import 'package:task_management/screens/widgets/taskCard.dart';
 import 'package:task_management/screens/widgets/ui_contants.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+  @override
+  State<Home> createState() => _HomeState();
+}
 
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     final appbar = Uiconstants.appbar();
     return Scaffold(
       appBar: appbar,
@@ -33,95 +39,49 @@ class Home extends StatelessWidget {
               ])),
             ), // container manage your tasks
             const CalenderComponent(),
-            Container(
-              height: size.height / 4,
-              margin: EdgeInsets.symmetric(horizontal: size.width / 18),
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 169, 210, 243),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ClipRRect(
-                        child: Container(
-                          width: size.width / 5,
-                          height: size.height / 25,
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: const Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                "High",
-                                style: TextStyle(color: Colors.black),
-                              )),
-                        ),
-                      ),
-                      ClipRRect(
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          child: const Align(
-                            alignment: Alignment.center,
-                            child: Icon(
-                              Icons.share,
-                              color: Colors.black,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  RichText(
-                      text: const TextSpan(children: [
-                    TextSpan(
-                        text: "April Dribble Shots Design plan for the month\n",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 25)),
-                    WidgetSpan(
-                        child: SizedBox(
-                      height: 35,
-                    )),
-                    WidgetSpan(
-                        child: Icon(
-                      Icons.calendar_month,
-                      color: Colors.black,
-                      size: 20,
-                    )),
-                    WidgetSpan(
-                        child: SizedBox(
-                      width: 10,
-                    )),
-                    TextSpan(
-                        text: "16 Apr",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 47, 46, 46),
-                            fontSize: 15))
-                  ]))
-                ],
-              ),
-            )
+            const TaskCard(),
+            const TaskCard(),
+            const TaskCard(),
           ],
         ),
+      ),
+      bottomNavigationBar: Theme(
+        data: ThemeData(canvasColor: Styles.primaryBackground),
+        child: BottomNavigationBar(
+            showSelectedLabels: false,
+            unselectedItemColor: Colors.white,
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    CupertinoIcons.home,
+                    size: 30,
+                  ),
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    CupertinoIcons.folder_badge_plus,
+                    size: 30,
+                  ),
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    CupertinoIcons.add,
+                    size: 30,
+                  ),
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    CupertinoIcons.chat_bubble,
+                    size: 30,
+                  ),
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    CupertinoIcons.person,
+                    size: 30,
+                  ),
+                  label: ""),
+            ]),
       ),
     );
   }
